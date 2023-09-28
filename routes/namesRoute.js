@@ -7,8 +7,12 @@ router.post('/api/names', async (req, res, next) => {
   try {
     const foundName = await myNames.find(aham=>(aham.name === name) || (aham.name.toLowerCase() === name) || (aham.name.toUpperCase() === name));
     if (name === foundName.name.toLowerCase() || name === foundName.name.toUpperCase() || name === foundName.name)
-      res.status(200).json(foundName);
-
+      res.status(200).json(
+  {
+    Message:' name found',
+    NameInfo: foundName
+  }
+);
   } catch (error) {
     res.json(error.message)
   }
@@ -21,8 +25,11 @@ router.get('/api/names', async (req, res, next) => {
   try {
     const foundName = await myNames.find(aham=>(aham.name === name) || (aham.name.toLowerCase() === name) || (aham.name.toUpperCase() === name));
     if (name === foundName.name.toLowerCase() || name === foundName.name.toUpperCase() || name === foundName.name)
-      res.status(200).json(foundName);
-
+      res.status(200).json({
+        Message:' name found',
+        NameInfo: foundName
+      });
+      
   } catch (error) {
     res.json(error.message)
   }
