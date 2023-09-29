@@ -1,11 +1,10 @@
 require('dotenv').config();
 const express = require('express');
-const PORT = process.env.PORT || 5500;
 const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
-const mostIgboNames = require('./routes/namesRoute');
 const bodyParser = require('body-parser');
+const PORT = process.env.PORT || 5500;
 
 //VARIABLE DECLARATION 
 const goodConnection = 'Database connected!';
@@ -15,12 +14,13 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopol
 
  
 //MIDDELWARE
-app.use(express.json());
-app.use(express.urlencoded({ extended: false, limit: '50mb' }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false, limit: '50mb' }));
 app.use(cors());
-app.use('/', mostIgboNames);   
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+const namesRoute = require('./routes/namesRoute');
+app.use('/', namesRoute);   
  
 
 

@@ -1,15 +1,15 @@
 const router = require('express').Router();
 const myNames = require('../igboNames/names')
 
-//post logic here
+// //post logic here
 // router.post('/api/names', async (req, res, next) => {
 //   const { name } = req.body;
 //   try {
 //     const foundName = await myNames.find(aham=>(aham.name === name) || (aham.name.toLowerCase() === name) || (aham.name.toUpperCase() === name));
 //     if (name === foundName.name.toLowerCase() || name === foundName.name.toUpperCase() || name === foundName.name)
-//       res.status(200).json(
+//       res.status(201).json(
 //   {
-//     Message:' name found',
+//     Message:' Name Created',
 //     NameInfo: foundName
 //   }
 // );
@@ -19,6 +19,7 @@ const myNames = require('../igboNames/names')
 //   next();
 // });
 
+
 //get logic
 router.get('/api/names', async (req, res, next) => {
   const { name } = req.body;
@@ -26,12 +27,12 @@ router.get('/api/names', async (req, res, next) => {
     const foundName = await myNames.find(aham=>(aham.name === name) || (aham.name.toLowerCase() === name) || (aham.name.toUpperCase() === name));
     if (name === foundName.name.toLowerCase() || name === foundName.name.toUpperCase() || name === foundName.name)
       res.status(200).json({
-        Message:' name found',
+        Message:' Name found!',
         NameInfo: foundName
       });
       
   } catch (error) {
-    res.json(error.message)
+    res.json('Error-Message: {Name undefined or  not found!}')
   }
   next();
 });
