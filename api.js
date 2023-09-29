@@ -2,15 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const mongoose = require('mongoose');
 // const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5500;
 
-//VARIABLE DECLARATION 
-const goodConnection = 'Database connected!';
-const badConnection = 'Database disconnected!';
-//connecting to database
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log(`${goodConnection}`)).catch(() => console.log(`${badConnection}`));
  
  
 //MIDDELWARE 
