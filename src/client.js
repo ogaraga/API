@@ -1,3 +1,5 @@
+const myNames = require('../igboNames/names')
+
 document.querySelector('form').addEventListener('submit', async (e) => {
     e.preventDefault();
     let inputs = document.getElementById('inputs');
