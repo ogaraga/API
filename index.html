@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body{min-height: 400px;
+        min-width: 400px;
+    }
         .container{
             background-color: aliceblue;
             width: 400px;
-            height: 400px;
+            min-height: 400px;
             margin: auto;
             display: flex;
             justify-content: center;
@@ -59,14 +62,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>Names in Igbo Nation(Africa)</h1>
+        <h1>Names in the world</h1>
         <form method="get">
-            <input type="text" name="name" id="inputs" placeholder="Enter your first igbo name" ><br>
+            <input type="text" name="name" id="inputs" placeholder="Enter your first name only..." autocomplete="on"><br>
             <button type="submit" id="btn">Send</button><br>
         </form>
         <span id="error-message"></span><br>
     </div>
-    <script src=""></script>
+    <!-- <script type="module" src="client.js"></script> -->
+    <script src="client.js"></script>
     
 </body>
 </html>

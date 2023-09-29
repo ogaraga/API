@@ -1,40 +1,21 @@
 const router = require('express').Router();
-const myNames = require('../igboNames/names')
+const myNames = require('../allNames/names')
 
-// //post logic here
-// router.post('/api/names', async (req, res, next) => {
-//   const { name } = req.body;
-//   try {
-//     const foundName = await myNames.find(aham=>(aham.name === name) || (aham.name.toLowerCase() === name) || (aham.name.toUpperCase() === name));
-//     if (name === foundName.name.toLowerCase() || name === foundName.name.toUpperCase() || name === foundName.name)
-//       res.status(201).json(
-//   {
-//     Message:' Name Created',
-//     NameInfo: foundName
-//   }
-// );
-//   } catch (error) {
-//     res.json(error.message)
-//   }
-//   next();
-// });
-
-
-//get logic
 router.get('/api/names', async (req, res, next) => {
-  const { name } = req.body;
-  try {
-    const foundName = await myNames.find(aham=>(aham.name === name) || (aham.name.toLowerCase() === name) || (aham.name.toUpperCase() === name));
-    if (name === foundName.name.toLowerCase() || name === foundName.name.toUpperCase() || name === foundName.name)
+    try {
+    if (await myNames.find(aham=>(aham.name))){
       res.status(200).json({
-        Message:' Name found!',
-        NameInfo: foundName
+        Message:' Names found!',
+        NameInfo: myNames
       });
-      
+     }
+     else{
+      res.status(404).json('Names not found!')
+     } 
   } catch (error) {
-    res.json('Error-Message: {Name undefined or  not found!}')
+    res.json('Something went wrong!')
   }
-  next();
+  next()
 });
 
 module.exports = router; 
