@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5500;
  
  
 //MIDDELWARE 
-app.use(cors({origin: "https://api-ogaraga.vercel.app/"})); 
+app.use(cors()); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use(bodyParser.json());
